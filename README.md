@@ -118,7 +118,4 @@ PyGuard AI automatically scans your codebase on every push and pull request:
 
 ## Built By
 
-**Apuroop Yarabarla** — AI/ML Engineer & AI Product Owner
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-apuroopyarabarla-0077B5?logo=linkedin)](https://linkedin.com/in/apuroopyarabarla)
-[![GitHub](https://img.shields.io/badge/GitHub-apuroopy1--prog-181717?logo=github)](https://github.com/apuroopy1-prog)
+Discovery Analytics Inc.
