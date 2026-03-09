@@ -1,0 +1,39 @@
+name: PyGuard AI CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Self-audit with PyGuard AI
+        run: |
+          python -m cli.pyguard scan app/ --recursive --no-ai --output pyguard-report.json
+        continue-on-error: true
+
+      - name: Upload PyGuard report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyguard-security-report
+          path: pyguard-report.json
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t pyguard-ai:latest .
